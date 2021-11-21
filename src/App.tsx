@@ -1,5 +1,5 @@
 // import React from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, HashRouter, Route, Switch } from "react-router-dom";
 import HomePage from "./features/HomePage";
 import CardPage from "./features/CardPage";
 import Header from "./features/Header";
@@ -11,7 +11,7 @@ const App = () => {
     // const {} = useAppSelector(state => state.productReducer.products);
 
     return (
-       <BrowserRouter>
+       <HashRouter>
         <Header />
             <Switch>
                 <Route exact
@@ -23,7 +23,7 @@ const App = () => {
             </Switch>
             <Footer />
 
-        </BrowserRouter>
+        </HashRouter>
     )
 }
 
