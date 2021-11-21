@@ -81,7 +81,7 @@ const Header = () => {
         >
             <Container fluid>
                 {/* <Navbar.Brand href="/">Logo</Navbar.Brand> */}
-                <Link to="/" role="button" style={{ textDecoration: "none", color: "black" }}>Logo</Link>
+                <Link to="/projects" role="button" style={{ textDecoration: "none", color: "black" }}>Logo</Link>
                 <Navbar.Toggle aria-controls="navbarScroll" />
                 <Navbar.Collapse id="navbarScroll" >
                     <Nav

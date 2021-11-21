@@ -15,7 +15,7 @@ const App = () => {
         <Header />
             <Switch>
                 <Route exact
-                    path="/" component={HomePage}
+                    path="/projects" component={HomePage}
                 />
                 <Route path="/card/:id"
                     component={CardPage}
