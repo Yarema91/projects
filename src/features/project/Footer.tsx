@@ -58,7 +58,7 @@ const Footer = () => {
       {/* <!-- Github --> */}
       <a
         className="btn btn-link btn-floating btn-lg text-dark m-1"
-        href="https://github.com/Yarema91/New_redux_product_app"
+        href="https://github.com/Yarema91/projects"
         role="button"
         data-mdb-ripple-color="dark"
         >
