@@ -19,7 +19,7 @@ const SearchBar = () => {
         const searchWord = event.target.value;
         setWordEntered(searchWord);
 
-        if (searchWord === "") {
+        if (!searchWord ) {
             setFilterData([]);
         } else {
             const newFilter = projects && projects.filter(project => {
