@@ -3,7 +3,7 @@
   "version": "0.1.1",
   "private": true,
   "type": "module",
-  "homepage": "https://yarema91.github.io/projects/",
+  "homepage": ".",
   "dependencies": {
     "@reduxjs/toolkit": "^1.6.2",
     "@tailwindcss/line-clamp": "^0.2.2",
