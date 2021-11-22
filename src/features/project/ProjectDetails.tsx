@@ -44,7 +44,7 @@ const ProjectDetails: React.FC<ProjectDetails> = ({ project, update, remove }) =
                 
                 <Link aria-label="Close"
                     className="position-absolute top-0 end-0"
-                    to="/projects"
+                    to="/"
                     style={{
                         color: "black",
                         margin: '0.5em 0.5em 0.5em ',
