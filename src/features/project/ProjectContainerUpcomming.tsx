@@ -31,7 +31,7 @@ const ProjectContainer = () => {
             <button onClick={handleCreate}>Create project</button> */}
 
             <Card border="success" style={{ width: '18rem' }}>
-            <Card.Header style={{ color: "green"}} as="h6" >Active</Card.Header>        
+            <Card.Header style={{ color: "green"}} as="h6" >Upcomming</Card.Header>        
             <div style={{ height: "42em", overflow: "auto" }}>
                 {isLoading && <h1>Loading...</h1>}
                 {error && <h1>Error download...</h1>}

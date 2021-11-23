@@ -12,7 +12,7 @@ const ProjectContainer = () => {
         <div >
            
             <Card border="warning" style={{ width: '18rem' }}>
-                <Card.Header style={{ color: "#FFB700" }} as="h6" >Process</Card.Header>
+                <Card.Header style={{ color: "#FFB700" }} as="h6" >Active</Card.Header>
                 <div style={{ height: "42em", overflow: "auto" }}>
                     {isLoading && <h1>Loading...</h1>}
                     {error && <h1>Error download...</h1>}

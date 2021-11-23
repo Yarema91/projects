@@ -11,7 +11,7 @@ const ProjectContainer = () => {
     return (
         <div >
             <Card border="info" style={{ width: '18rem' }}>
-                <Card.Header style={{ color: "#03C5EE" }} as="h6" >Finished</Card.Header>
+                <Card.Header style={{ color: "#03C5EE" }} as="h6" >Draft</Card.Header>
                 <div style={{ height: "42em", overflow: "auto" }}>
                     {isLoading && <h1>Loading...</h1>}
                     {error && <h1>Error download...</h1>}
