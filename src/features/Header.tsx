@@ -9,6 +9,8 @@ import ModalWindow from './project/ModalWindow';
 import projectSlice from './project/projectSlice';
 import SearchBar from './project/SearchBar';
 
+import logoSvg from '../ATSlogo.png';
+
 // interface Header {
 //     project: IProject
 // }
@@ -66,89 +68,133 @@ const Header = () => {
         const title = projectInput.title;
         const body = projectInput.body;
 
-        if (!getFormIsValid()) {(
-           <h1>Input empty...</h1>
-        )} else {
-            await createProject({ title, imageUrl: "https://source.unsplash.com/1600x900/?project-art", body, status: "active" } as IProject);
+        if (!getFormIsValid()) {
+            (
+                <h1>Input empty...</h1>
+            )
+        } else {
+            await createProject({ title, imageUrl: "https://source.unsplash.com/1600x900/?project-art", body, status: "draft" } as IProject);
             setProjectInput(defaultFormValues);
         }
     }
 
     return (
-        <Navbar bg="light" expand="lg"
-            //  sticky="top"
-            fixed="top"
-        >
-            <Container fluid>
-                {/* <Navbar.Brand href="/">Logo</Navbar.Brand> */}
-                <Link to="/" role="button" style={{ textDecoration: "none", color: "black" }}>Logo</Link>
-                <Navbar.Toggle aria-controls="navbarScroll" />
-                <Navbar.Collapse id="navbarScroll" >
-                    <Nav
-                        className="me-auto my-2 my-lg-0"
-                        style={{ maxHeight: '100px' }}
-                        navbarScroll
+        <nav className="navbar fixed-top navbar-expand-lg navbar-light bg-light" 
+        style={{paddingBottom: "0",
+        paddingTop: "0",
+        }}>
+            <div className="container-fluid">
+                <Link className="navbar-brand" to="/" role="button" style={{ textDecoration: "none", color: "black" }}> 
+                <div className="header__logo">
+                <img width="108" src={logoSvg} alt="ATS logo" />
+                </div>
+                </Link>
+                <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span className="navbar-toggler-icon"></span>
+                </button>
+                <div className="collapse navbar-collapse" id="navbarSupportedContent"
+                style={{
+                    //  display: "-webkit-inline-box",
+                     width: "100%",
+
+                }}>
+                    <ul className="navbar-nav ms-auto mb-2 mb-lg-2"
+                        style={{
+                            // paddingBlockStart: ".5em",
+                            margin: "auto",
+                            // display: "-webkit-inline-box"
+                        }}
                     >
-                    </Nav>
-                    <SearchBar />
-                    <Nav
-                        className="me-auto my-2 my-lg-0"
-                        style={{ maxHeight: '100px' }}
-                        navbarScroll
-                    >
-                    </Nav>
+                        <li className="  nav-item me-2 md-auto " style={{ paddingBlockStart: ".5em", }}>
+                            <SearchBar />
+                        </li>
 
-                    <ModalWindow title="Create Project" nameButton="Save" onHandleSubmit={handleCreate1} disabled={!getFormIsValid()} >
+                        <li style={{
+                            paddingBlockStart: ".5em",
+                            margin: "auto",
+                            paddingLeft: "0rem", 
+                            // alignItems:  "unset",
+                            // width: "auto",
+                        }}>
+                            {CreateIsLoading && <h1>Loading create project...</h1>}
+                            {CreateError && <h1>Error creative...</h1>}
+                            <ModalWindow title="Create Project" nameButton="Save" onHandleSubmit={handleCreate1} disabled={!getFormIsValid()} >
 
-                        <form className="row g-3" action="create-form" >
-                            <div className="col-md-4">
-                                <div className="form-outline">
-                                    <label htmlFor="validationDefault01" className="form-label">Title</label>
-                                    <input
-                                        type="text"
-                                        className='form-control'
-                                        placeholder='title'
-                                        value={projectInput.title || ""}
-                                        onChange={e => {
-                                            setProjectInput({ ...projectInput, title: e.target.value });
-                                            setIsDirty({ ...isDirty, "title": true });
-                                        }
-                                        }
-                                    />
-                                </div>
-                            </div>
-                            <div style={{ backgroundColor: "gold" }}>
-                                {isDirty["title"] && getFieldValidation("title").messages}
-                            </div>
+                                <form className="row g-3" action="create-form" >
+                                    <div className="col-md-4">
+                                        <div className="form-outline">
+                                            <label htmlFor="validationDefault01" className="form-label">Title</label>
+                                            <input
+                                                type="text"
+                                                className='form-control'
+                                                placeholder='title'
+                                                value={projectInput.title || ""}
+                                                onChange={e => {
+                                                    setProjectInput({ ...projectInput, title: e.target.value });
+                                                    setIsDirty({ ...isDirty, "title": true });
+                                                }
+                                                }
+                                            />
+                                        </div>
+                                    </div>
+                                    <div style={{ backgroundColor: "gold" }}>
+                                        {isDirty["title"] && getFieldValidation("title").messages}
+                                    </div>
 
-                            <div className="">
-                                <div className="form-outline">
-                                    <label htmlFor="validationDefault01" className="form-label">Body</label>
-                                    <textarea
-                                        // type="text"
-                                        className='form-control'
-                                        placeholder='body'
-                                        value={projectInput.body || ""}
-                                        onChange={e => {
-                                            setProjectInput({ ...projectInput, body: e.target.value });
-                                            setIsDirty({ ...isDirty, "body": true });
-                                        }}
-                                    />
-                                </div>
-                            </div>
-                            <div style={{ backgroundColor: "gold" }}>
-                                {isDirty["body"] && getFieldValidation("body").messages}
-                            </div>
+                                    <div className="">
+                                        <div className="form-outline">
+                                            <label htmlFor="validationDefault01" className="form-label">Body</label>
+                                            <textarea
+                                                // type="text"
+                                                className='form-control'
+                                                placeholder='body'
+                                                value={projectInput.body || ""}
+                                                onChange={e => {
+                                                    setProjectInput({ ...projectInput, body: e.target.value });
+                                                    setIsDirty({ ...isDirty, "body": true });
+                                                }}
+                                            />
+                                        </div>
+                                    </div>
+                                    <div style={{ backgroundColor: "gold" }}>
+                                        {isDirty["body"] && getFieldValidation("body").messages}
+                                    </div>
 
-                        </form>
-                    </ModalWindow>
-                    {CreateIsLoading && <h1>Loading create project...</h1>}
-                    {CreateError && <h1>Error creative...</h1>}
-                    {/* <Button variant="outline-success" className="me-2" onClick={handleCreate}>Create Project</Button> */}
-                    <Button variant="success">Log In</Button>
-                </Navbar.Collapse>
-            </Container>
-        </Navbar>
+                                </form>
+                            </ModalWindow>
+                        </li>
+                    </ul >
+
+                    <li  style={{
+                                // display: "flex",
+                                // justifyContent: "center",
+                                // alignItems: "center",
+                                // margin: "auto",
+                                // backgroundColor: "white",
+                                // borderRadius: "5px",
+                                // paddingBlockStart: ".5em",
+                                textDecoration: "none",
+                                listStyle: "none"
+                            }}
+                        >
+                            <ul style={{ listStyle: "none ",
+                             display: "flex",
+                             justifyContent: "center",
+                            alignItems: "center",
+                            margin: "auto",
+                            paddingLeft: "0rem",    
+                        }}>
+                                <Button variant="#00008B"
+                                style={{ 
+                                    color: "white",
+                                    backgroundColor: "#00008B"
+                                    }}
+                                >Log In</Button>
+                            </ul>
+                        </li>
+                </div>
+            </div>
+        </nav>
     )
 }
 

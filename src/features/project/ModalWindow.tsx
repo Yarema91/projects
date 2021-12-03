@@ -16,10 +16,12 @@ const ModalWindow = ({ title, nameButton, children, onHandleSubmit, disabled }) 
     };
 
     return (
-        <div>
-            <Button variant="outline-success" className="me-2" onClick={handleShow}>
+        <div 
+        style={{ paddingLeft: ".7rem"}}
+        >
+            <button  type="button" className=" btn btn-outline-primary me-2" onClick={handleShow} style={{borderColor: "#00008B", color: "#00008B" }}>
                 {title}
-            </Button>
+            </button>
 
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>

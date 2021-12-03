@@ -38,7 +38,8 @@ const SearchBar = () => {
         <div >
             {isLoading && <h1>Loading search...</h1>}
             {error && <h1>Error searching...</h1>}
-            <Form className="d-flex" style={{
+            <Form className="d-flex" 
+            style={{
                 display: "flex",
                 paddingLeft: "10px",
                 justifyContent: "center",
@@ -46,7 +47,7 @@ const SearchBar = () => {
                 margin: "auto",
                 backgroundColor: "white",
                 borderRadius: "5px",
-                border: "1px solid green",
+                border: "1px solid #00008B",
             }}>
                 <input
                     type="text"
@@ -68,7 +69,7 @@ const SearchBar = () => {
                 <Button variant="secondary"
                     style={{
                         backgroundColor: "white",
-                        color: "green",
+                        color: "#00008B",
                         textTransform: "uppercase",
                         borderStyle: "none",
                         borderRadius: "5px",

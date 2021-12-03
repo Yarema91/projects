@@ -95,12 +95,12 @@
     "build": "node scripts/build.js",
     "test": "node scripts/test.js",
     "server": "node server.js",
-    "json-server": "json-server --watch db.json --port=5000"
+    "json-server": "json-server --watch ./public/db.json --port=5000"
   },
   "eslintConfig": {
     "extends": "react-app"
   },
-  "proxy": "http://localhost:3001",
+  "proxy": "http://localhost:5000",
   "browserslist": {
     "production": [
       ">0.2%",

@@ -29,13 +29,6 @@
       "status": "process"
     },
     {
-      "title": "nllnlnl",
-      "imageUrl": "https://source.unsplash.com/1600x900/?project-art",
-      "body": ";n;n;n;n;n",
-      "status": "finish",
-      "id": 12
-    },
-    {
       "title": "Indian tradishion dish",
       "imageUrl": "https://source.unsplash.com/1600x900/?project-art",
       "body": "335467768nkkn",
@@ -57,11 +50,25 @@
       "id": 19
     },
     {
-      "title": "lml",
+      "title": "Draft project",
       "imageUrl": "https://source.unsplash.com/1600x900/?project-art",
-      "body": "llnln",
-      "status": "active",
-      "id": 20
+      "body": "One who buys NFT in the auction with content proof of charity events in the past for financing charity events in the future also receives the status of philanthropist and chooses a new charity project for financing.",
+      "status": "draft",
+      "id": 21
+    },
+    {
+      "title": "test response",
+      "imageUrl": "https://source.unsplash.com/1600x900/?project-art",
+      "body": "Charity as a Product - philanthropes who bought NFT with proof of charity events get the right to becomes a member of the Supervisory Board and get the power of managing ATC267 Foundation",
+      "status": "draft",
+      "id": 22
+    },
+    {
+      "title": "height colomn",
+      "imageUrl": "https://source.unsplash.com/1600x900/?project-art",
+      "body": "height colomn height colomn height colomn",
+      "status": "draft",
+      "id": 23
     }
   ],
   "comments": [],

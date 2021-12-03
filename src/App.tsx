@@ -11,8 +11,8 @@ const App = () => {
     // const {} = useAppSelector(state => state.productReducer.products);
 
     return (
-       <HashRouter>
-        <Header />
+        <HashRouter>
+            <Header />
             <Switch>
                 <Route exact
                     path="/" component={HomePage}

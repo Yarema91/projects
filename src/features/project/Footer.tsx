@@ -3,8 +3,8 @@ import React from "react";
 
 const Footer = () => {
     return (
-        <div>
-            <footer className="text-center text-white" style={{backgroundColor: "#F8F8F8"}} >
+        <div className="col-xs-12"> 
+            <footer   className="text-center text-white" style={{backgroundColor: "#F8F8F8"}} >
   {/* <!-- Grid container --> */}
   <div className="container pt-4">
     {/* <!-- Section: Social media --> */}
@@ -77,6 +77,10 @@ const Footer = () => {
   {/* <!-- Copyright --> */}
 </footer>
         </div>
+
+
+
+
     )
 }
 
