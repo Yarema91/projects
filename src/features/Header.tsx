@@ -79,9 +79,14 @@ const Header = () => {
     }
 
     return (
-        <nav className="navbar fixed-top navbar-expand-lg navbar-light bg-light" 
-        style={{paddingBottom: "0",
+
+        
+
+
+        <nav className="navbar fixed-top navbar-expand-lg navbar-light bg-light " 
+        style={{
         paddingTop: "0",
+        paddingBottom: "0em"
         }}>
             <div className="container-fluid">
                 <Link className="navbar-brand" to="/" role="button" style={{ textDecoration: "none", color: "black" }}> 
@@ -98,7 +103,7 @@ const Header = () => {
                      width: "100%",
 
                 }}>
-                    <ul className="navbar-nav ms-auto mb-2 mb-lg-2"
+                    <ul className="navbar-nav ms-auto mb-2 mb-lg-2 "
                         style={{
                             // paddingBlockStart: ".5em",
                             margin: "auto",

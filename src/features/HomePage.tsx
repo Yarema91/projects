@@ -18,11 +18,14 @@ const HomePage = () => {
   return (
     <div  >
      
-      <div className="container">
+      <div className="container-fluid">
         <h2 style={{
+          boxSizing: "border-box",
           display: "row",
           textAlign: "center",
-          margin: "3em 0em 1em 0em"
+          margin: "3em 0em 1em 0em",
+          // maxHeight: "100px"
+  
         }}
         >Stages of financing</h2>
       </div>
@@ -33,11 +36,14 @@ const HomePage = () => {
         //   margin: "1em 0em 1em 0em"
         //   //  alignContent: "center",
           alignItems: "flex-center",
-          paddingBlockEnd: "3.2em"
+          paddingBlockEnd: "3.2em",
+          
         //   // margin: "0em 0em 0em 6%"
         }}
       >
-        <div className="row" data-toggle="dropdown"
+        <div className="row" style={{ maxWidth: "none",
+        
+       }} data-toggle="dropdown"
         
         >
           <div className="col-sm">
