@@ -46,10 +46,8 @@ const ProjectDetails: React.FC<ProjectDetails> = ({ project, update, remove }) =
                 height: "auto",
                 alignItems: "flex-center",
                 justifyContent: "center",
-                // background: "blue",
                 margin: '2rem',
-               
-            }}   >
+            }}>
 
             <Link aria-label="Close"
                 className="position-absolute top-0 end-0"
@@ -65,28 +63,27 @@ const ProjectDetails: React.FC<ProjectDetails> = ({ project, update, remove }) =
                 }} ><i className="bi bi-x-lg" style={{ margin: '0.2em 0.2em 0.5em ', }}></i>
             </Link>
             <Card.Body >
-                <div className="container" style={{
-                    // display: "row",
-                }}>
+                <div className="container" >
                     <div className="row">
-                        <div className="col-md-8"><Card.Img variant="top" src={project.imageUrl} /></div>
-                        <div className="col-md-4"><Card>
+                        <div className="col-md-8">
+                            <Card.Img variant="top" src={project.imageUrl} />
+                        </div>
+                        <div className="col-md-4">
                             <div style={{ margin: '4%' }}><h1>{value}</h1>
-                                <a className="me-2" onClick={() => dispatch(decrease())}><i className="bi bi-hand-thumbs-down"></i></a>
-                                <a className="me-2" onClick={() => dispatch(increase())}><i className="bi bi-hand-thumbs-up"></i></a>
-                            </div >
-                        </Card></div>
+                                    <a className="me-2" onClick={() => dispatch(decrease())}><i className="bi bi-hand-thumbs-down"></i></a>
+                                    <a className="me-2" onClick={() => dispatch(increase())}><i className="bi bi-hand-thumbs-up"></i></a>
+                                </div >
+                           
+                        </div>
                     </div>
                 </div>
 
                 <Card.Title> {project.id}. {project.title}</Card.Title>
-
                 <Card.Text>
                     {project.body}
                 </Card.Text>
                 <Button variant="primary" className="me-2" onClick={handleUpdate}>Edit</Button>
                 <Button variant="primary" onClick={handleDelete} >Delete</Button>
-
             </Card.Body>
         </Card>
     )

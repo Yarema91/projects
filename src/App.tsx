@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter, HashRouter, Route, Switch } from "react-router-dom";
 import HomePage from "./features/HomePage";
 import CardPage from "./features/CardPage";
-import Header from "./features/Header";
+import Navbar from "./features/Navbar";
 import Footer from "./features/project/Footer";
 // import { useAppSelector } from "./hooks/redux";
 
@@ -12,7 +12,7 @@ const App = () => {
 
     return (
         <HashRouter>
-            <Header />
+            <Navbar />
             <Switch>
                 <Route exact
                     path="/" component={HomePage}

@@ -1,0 +1,66 @@
+*,
+*:before,
+*:after {
+  position: relative;
+  box-sizing: border-box;
+}
+
+html,body{
+  margin:0;
+  padding:0;
+  height: 100%;
+  width: 100%
+}
+
+#root, .App {
+height: 100%;
+width: 100%;
+}
+
+.App {
+  background: #d3775d;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+}
+
+
+.Button {
+  outline: none;
+  border: 2px solid #2d4059;
+  font-size: 1.4rem;
+  padding: .7em 1.2em;
+  background: transparent;
+  color: white;
+overflow: hidden;
+transition: color 150ms linear;
+z-index: 1;
+font-weight: bold;
+box-shadow: 8px 8px #2d4059;
+cursor: pointer;
+&:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 140%;
+  height: 105%;
+  background: white;
+  transform: skew(-33deg, 0) translateX(-110%);
+  transition: transform 150ms linear;
+  z-index: -1;
+  }
+  
+  &:hover {
+    color: #2d4059;
+    transition: color 150ms linear;
+    &:before {
+      transform: skew(-33deg, 0) translateX(-10%);
+      transition: transform .25s linear;
+      
+    }
+  }
+
+}

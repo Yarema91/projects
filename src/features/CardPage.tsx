@@ -18,12 +18,10 @@ const CardPage: React.FC<CardPage> = () => {
 
     let { id } = useParams<{ id }>();
     const { data: project, error, isLoading } = projectAPI.useFetchProjectByIdQuery(id);
-    console.log(project);
 
     const erroeMassege = () => {
         return (<h1>"Can not fetch details"</h1>)
     }
-    console.log('id', id);
 
     const handleUpdate = (project: IProject) => {
         updateProject(project)
@@ -33,29 +31,14 @@ const CardPage: React.FC<CardPage> = () => {
     }
 
     return (
-        <div className="container"
-        style={{
-            //  display: "row",
-            margin: "auto",
-        //    background: "red",
-           boxSizing: "border-box",
-        //    boxSizing: "inherit",
-        //    position: "relative",
-        //    width: "100%",
-        //    minHeight: "1px",
-           paddingTop: "1.5em",
-           paddingLeft: "15px",
-           
-        //    paddingLeft: "15em",
-        //    height: "800px",
-        }} 
-        >
+        <div className="container m-auto l-15px t-1.5em box-sizing-border-box">
             {error && <h1>Error find...</h1>}
             {isLoading && <h1>Loading find by id project...</h1>}
             {DeleteError && <h1>Error delete...</h1>}
             {DeleteIsLoading && <h1>Loading Delete project...</h1>}
             {UpdateError && <h1>Error update...</h1>}
             {UpdateIsLoading && <h1>Loading update project...</h1>}
+
             {(project) ? <ProjectDetails project={project} update={handleUpdate} remove={handleRemove}
             /> : erroeMassege()}
         </div>

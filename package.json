@@ -5,6 +5,8 @@
   "homepage": "https://ats-projects.herokuapp.com/",
   "dependencies": {
     "@babel/core": "7.9.0",
+    "@emotion/css": "^11.7.1",
+    "@emotion/react": "^11.7.1",
     "@reduxjs/toolkit": "^1.6.2",
     "@svgr/webpack": "4.3.3",
     "@tailwindcss/line-clamp": "^0.2.2",
