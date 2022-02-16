@@ -1,11 +1,12 @@
 import React from "react";
-import { BrowserRouter, HashRouter, Route, Switch } from "react-router-dom";
-import HomePage from "./features/HomePage";
-import CardPage from "./features/CardPage";
+import { BrowserRouter, HashRouter, Redirect, Route, Switch } from "react-router-dom";
 import Navbar from "./features/Navbar";
 import Footer from "./features/project/Footer";
-// import { useAppSelector } from "./hooks/redux";
+import HomePage from "./pages/HomePage";
 
+
+const CardPage = React.lazy(() => import("./pages/CardPage"));
+const ErrorPage = React.lazy(() => import("./pages/ErrorPage"));
 
 const App = () => {
     // const {} = useAppSelector(state => state.productReducer.products);
@@ -17,9 +18,16 @@ const App = () => {
                 <Route exact
                     path="/" component={HomePage}
                 />
-                <Route path="/card/:id"
-                    component={CardPage}
-                />
+                <React.Suspense fallback={<h1>Loading posts...</h1>}>
+
+                    <Route path="/card/:id" component={CardPage}
+                    />
+                    <Redirect path="/" to="/error" exact
+                     />
+                    <Route path="/error" component={ErrorPage}
+                    />
+                </React.Suspense>
+
             </Switch>
             <Footer />
         </HashRouter>

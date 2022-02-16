@@ -1,159 +1,139 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { Navbar, Nav, Container, Form, FormControl, Button } from 'react-bootstrap';
-import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { IProject } from '../models/IProject';
 import { projectAPI } from '../services/ProjectService';
 import ModalWindow from './project/ModalWindow';
 import SearchBar from './project/SearchBar';
 
 import logoSvg from '../ATSlogo.png';
+import FormValidator from '../hooks/costunerValidatorForm';
+import { table } from 'console';
 
-// interface Header {
-//     project: IProject
-// }
 
-const defaultFormValues = {
-    imageUrl: '',
+const defaultFormValues: IProject = {
     title: '',
-    body: ''
+    imageUrl: '',
+    body: '',
+    id: 0,
+    status: '',
+    values: {},
 };
 
-type FieldName = "title" | "body" | "imageUrl";
 
 const Header = () => {
 
     const [createProject, { error: CreateError, isLoading: CreateIsLoading }] = projectAPI.useCreateProjectMutation()
 
-    // const handleCreate = async () => {
-    //     const title = prompt();
-    //     if (title === "") {
-    //         <h1>Title empty...</h1>
-    //     } else await createProject({ title, body: title, status: "active" } as IProject)
-    // }
+    const [projectInput, setProjectInput] = useState(defaultFormValues);
 
-    // Form =>
-    const [projectInput, setProjectInput] = useState<{ title: string, body: string, imageUrl: string }>(defaultFormValues);
+    const { getFormIsValid, getFieldValidation} = FormValidator(projectInput) as any;
     const [isDirty, setIsDirty] = useState<{ [id: string]: boolean }>({ title: false });
 
-
-
-    const validationState: { [id: string]: { isInvalid: boolean, message: string }[] } = {
-        "title": [
-            { isInvalid: projectInput.title === "", message: "Title can not be empty" },
-            { isInvalid: (projectInput.title !== "") && projectInput.title?.length < 3, message: "Title is too short" },
-        ],
-        "body": [
-            { isInvalid: projectInput.body === "", message: "Body can not be empty" },
-        ]
-    };
-
-    const getFieldValidation = (fieldName: FieldName) => {
-        const result = validationState[fieldName];
-        var isInvalid = result.map(x => x.isInvalid).some(x => x);
-        var messages = result.filter(x => x.isInvalid).map(x => x.message);
-        return {
-            isInvalid: isInvalid,
-            messages
-        }
-    };
-
-    const getFormIsValid = () => {
-        return !getFieldValidation("title").isInvalid &&
-            !getFieldValidation("body").isInvalid;
-    };
-
+    
     const handleCreate1 = async () => {
-        const title = projectInput.title;
-        const body = projectInput.body;
-        console.log('create');
+        const title = projectInput.title.charAt(0).toUpperCase() + projectInput.title.slice(1);
+        const body = projectInput.body.charAt(0).toUpperCase() + projectInput.body.slice(1);
+        const imageUrl = projectInput.imageUrl;
 
         if (!getFormIsValid()) {
             (
                 <h1>Input empty...</h1>
             )
         } else {
-            await createProject({ title, imageUrl: "https://source.unsplash.com/1600x900/?project-art", body, status: "Draft" } as IProject);
+            await createProject({ title, imageUrl: (imageUrl === "" ) ?  "https://source.unsplash.com/1600x900/?project-art" : imageUrl, body, status: "Draft" } as IProject);
             setProjectInput(defaultFormValues);
         }
     }
 
-    return (
+    // //new
+    // const formLogin = () => {
+    //     console.log("Callback function when form is submitted!");
+    //     console.log("Form Values ", values);
+    //     const {title, body, imageUrl }: Form = values as any;  
+    //     createProject({title, body, imageUrl,  status: "Draft"}  as IProject);
+    //     setProjectInput(defaultFormValues);
+    // }
 
-        <nav className="navbar  navbar-expand-lg navbar-light bg-light "
-            style={{
-                paddingTop: "0",
-                paddingBottom: "0em"
-            }}>
+    // //Custom hook call
+    // const { handleChange, values, errors, handleSubmit } = useForm(formLogin);
+
+    return (
+        <nav className="navbar  navbar-expand-lg navbar-light bg-light pt-0 pb-0 ">
+
             <div className="container-fluid">
                 <Link className="navbar-brand" to="/" role="button" style={{ textDecoration: "none", color: "black" }}>
                     <div className="header__logo">
                         <img width="108" src={logoSvg} alt="ATS logo" />
                     </div>
                 </Link>
+
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
-                <div className="collapse navbar-collapse " id="navbarSupportedContent"
-                    style={{
-                        width: "100%",
-                    }}
-                    >
-                    <ul className="navbar-nav ms-auto mb-2 mb-lg-2 "
-                        style={{
-                            // paddingBlockStart: ".5em",
-                            margin: "auto",
-                        }}
-                    >
-                        <li className="  nav-item me-2 md-auto " style={{ paddingBlockStart: ".5em", }}>
+
+                <div className="collapse navbar-collapse w-100 " id="navbarSupportedContent">
+                    <ul className="navbar-nav ms-auto mb-2 mb-lg-2  m-auto ">
+                        <li className="nav-item me-2 md-auto pt-2" >
                             <SearchBar />
                         </li>
 
-                        <li style={{
-                            paddingBlockStart: ".5em",
-                            margin: "auto",
-                            paddingLeft: "0rem",
+                        <li className="m-auto pt-2 l-0 ">
 
-                        }}>
                             {CreateIsLoading && <h1>Loading create project...</h1>}
                             {CreateError && <h1>Error creative...</h1>}
-                            <ModalWindow title="Create Project" nameButton="Save" onHandleSubmit={handleCreate1} disabled={!getFormIsValid()} >
 
-                                <form className="row g-3" action="create-form" >
-                                    <div className="col-md-4">
-                                        <div className="form-outline">
-                                            <label htmlFor="validationDefault01" className="form-label">Title</label>
-                                            <input
-                                                type="text"
-                                                className='form-control'
-                                                placeholder='title'
-                                                value={projectInput.title || ""}
-                                                onChange={e => {
-                                                    setProjectInput({ ...projectInput, title: e.target.value });
-                                                    setIsDirty({ ...isDirty, "title": true });
-                                                }
-                                                }
-                                            />
-                                        </div>
+                            <ModalWindow title="Create Project" nameButton="Save" onHandleSubmit={handleCreate1} disabled={!getFormIsValid()}  >
+
+                                <form className="row g-3" action="create-form"  >
+                                    <div className="col-md-4 form-outline">
+                                        <label htmlFor="validationDefault01" className="form-label">Title</label>
+                                        <input
+                                            type="text"
+                                            className='form-control'
+                                            placeholder='name'
+                                            value={projectInput.title || ""}
+                                            onChange={e => {
+                                               
+                                                setProjectInput({ ...projectInput, title: e.target.value });
+                                                setIsDirty({ ...isDirty, "title": true });
+                                            }
+                                            }
+                                        />
                                     </div>
+
                                     <div style={{ backgroundColor: "gold" }}>
                                         {isDirty["title"] && getFieldValidation("title").messages}
                                     </div>
 
-                                    <div className="">
-                                        <div className="form-outline">
-                                            <label htmlFor="validationDefault01" className="form-label">Body</label>
-                                            <textarea
-                                                className='form-control'
-                                                placeholder='body'
-                                                value={projectInput.body || ""}
-                                                onChange={e => {
-                                                    setProjectInput({ ...projectInput, body: e.target.value });
-                                                    setIsDirty({ ...isDirty, "body": true });
-                                                }}
-                                            />
-                                        </div>
+                                    <div className="form-group">
+                                    <label htmlFor="validationDefault01" className="form-label">Photo or video</label>
+                                    <input  type="text" name="url" className='form-control'  placeholder="https://"
+                                    value={projectInput.imageUrl ||  ""}
+                                     onChange={e => {
+                                        setProjectInput({ ...projectInput, imageUrl: e.target.value });
+                                        setIsDirty({ ...isDirty, "imageUrl": true });
+                                    }} 
+                                     />
+                                     </div>
+                                     <div style={{ backgroundColor: "gold" }}>
+                                        {isDirty["imageUrl"] && getFieldValidation("imageUrl").messages}
                                     </div>
+
+                                    <div className="form-outline">
+                                        <label htmlFor="validationDefault01" className="form-label">Body</label>
+                                        <textarea
+                                            className='form-control'
+                                            placeholder='About project'
+                                            id="exampleFormControlTextarea1" 
+                                            value={projectInput.body || ""}
+                                            onChange={e => {
+                                                setProjectInput({ ...projectInput, body: e.target.value });
+                                                setIsDirty({ ...isDirty, "body": true });
+                                            }}
+                                        />
+                                    </div>
+
                                     <div style={{ backgroundColor: "gold" }}>
                                         {isDirty["body"] && getFieldValidation("body").messages}
                                     </div>
@@ -161,33 +141,28 @@ const Header = () => {
                                 </form>
                             </ModalWindow>
                         </li>
-                    </ul >
+                    </ul>
 
-                    <li style={{
-                        textDecoration: "none",
-                        listStyle: "none"
-                    }}
+                   
+
+                    <li
+                    className=" list-unstyled text-decoration-none align-item-center justify-content-center"
                     >
-                        <ul style={{
-                            listStyle: "none ",
-                            display: "flex",
-                            justifyContent: "center",
-                            alignItems: "center",
-                            margin: "auto",
-                            paddingLeft: "0rem",
-                        }}>
-                            <Button variant="#00008B"
+                        
+                            {/* <Button variant="#00008B" 
+                            className="align-item-center justify-content-center list-unstyled"
                                 style={{
+                                    // display: "table",
                                     color: "white",
                                     backgroundColor: "#00008B"
                                 }}
-                            >Log In</Button>
-                        </ul>
+                            >Log In</Button> */}
                     </li>
+
                 </div>
             </div>
         </nav>
     )
 }
 
-export default Header
+export default React.memo(Header)

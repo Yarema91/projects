@@ -1,5 +1,5 @@
 import React from "react";
-import ProjectDetails from "./project/ProjectDetails";
+import ProjectDetails from "../features/project/ProjectDetails";
 import { IProject } from "../models/IProject";
 import { useParams } from 'react-router-dom';
 import { projectAPI } from "../services/ProjectService";

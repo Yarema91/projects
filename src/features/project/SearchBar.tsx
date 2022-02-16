@@ -38,30 +38,19 @@ const SearchBar = () => {
         <div >
             {isLoading && <h1>Loading search...</h1>}
             {error && <h1>Error searching...</h1>}
-            <Form className="d-flex" 
+            <Form className="d-flex m-auto align-items-center" 
             style={{
-                display: "flex",
                 paddingLeft: "10px",
                 justifyContent: "center",
-                alignItems: "center",
-                margin: "auto",
                 backgroundColor: "white",
                 borderRadius: "5px",
                 border: "1px solid #00008B",
             }}>
                 <input
                     type="text"
-                    // className="   "
-                    style={{
-                        width: "100%",
-                        // height: "54px",
-                        background: "none",
-                        border: "0",
-                        padding: "0",
-                        outline: "none",
-                    }}
+                    className=" w-100 p-0  border-0 btn-outline-none  background-none "
+                    style={{ outline: "none" }}
                     placeholder="Search"
-                    // className="me-2"
                     aria-label="Search"
                     onChange={handleFilter}
                     value={wordEntered}

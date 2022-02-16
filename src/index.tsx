@@ -11,8 +11,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 const store = setupStore();
 
-
-
 const rootElement = document.getElementById("root");
 ReactDOM.render(
   <Provider store={store}>
