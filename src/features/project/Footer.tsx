@@ -18,23 +18,26 @@ const Footer = () => {
         ><i className="fab fa-facebook-f"></i
       ></a> */}
 
-      {/* <!-- Twitter -->
+      {/* <!-- Twitter --> */}
       <a
-        class="btn btn-link btn-floating btn-lg text-dark m-1"
+        className="btn btn-link btn-floating btn-lg text-dark m-1"
         href="#!"
         role="button"
         data-mdb-ripple-color="dark"
-        ><i class="fab fa-twitter"></i
-      ></a>
+        ><i className="fab fa-twitter"></i
+      >
+      <i className="bi bi-twitter"></i>
+      </a>
 
-      <!-- Google -->
+      {/* <!-- Google --> */}
       <a
-        class="btn btn-link btn-floating btn-lg text-dark m-1"
+        className="btn btn-link btn-floating btn-lg text-dark m-1"
         href="#!"
         role="button"
         data-mdb-ripple-color="dark"
-        ><i class="fab fa-google"></i
-      ></a> */}
+        >
+         <i className="bi bi-google"></i>
+      </a>
 
       {/* <!-- Instagram -->
       <a

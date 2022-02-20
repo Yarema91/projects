@@ -3,61 +3,69 @@ import { projectAPI } from "../../services/ProjectService";
 import ProjectListItem from "./ProjectListItem";
 import { css } from '@emotion/react'
 
+const defaultStyle = {
+    shadow: ".1em 0 .6em #DCDCDC", //".2em 0 .6em #DCDCDC",
+    top: "0px",
+    left: "0px",
+};
 
-const StatusContainer = ({ status }:{ status: string}) => {
+const hoverStyle = {
+    shadow: "4px 6px 10px rgb(0 0 0 / 0.4)",
+    top: "-5px",
+    left: "-5px",
+};
 
-    // const [limit, setLimit] = useState(10);
 
-    // const initialStyle = {
-    //     shadow: ".1em 0 .6em #DCDCDC",
-    //     position: 0
-    // }
+const StatusContainer = ({ status }: { status: string }) => {
 
     const { data: projects, error, isLoading } = projectAPI.useFetchAllProjectsQuery(10);
 
-    const [shadow, setShadow] = useState(".1em 0 .6em #DCDCDC");
+    const [style, setShadow] = useState(defaultStyle);
 
-   
 
     return (
         <div className="col-sm p-0 m-2 rounded"
-        style={{
-            boxShadow: `${shadow}`  //".2em 0 .6em #DCDCDC",
-        }}
-        onMouseOver={() => ( setShadow(".5em 0 .8em #1B1B3B")) }
-        onMouseOut={() => (setShadow(".1em 0 .6em #DCDCDC")) }
+            style={{
+                boxShadow: `${style.shadow}`, top: `${style.top}`, left: `${style.left}`, position: "relative"
+            }}
+            onMouseOver={() => (setShadow(hoverStyle))}
+            onMouseOut={() => (setShadow(defaultStyle))}
         >
-            <nav className="navbar navbar-expand-lg navbar-light bg-light container-fluid p-0  d-initial" style={{display: "initial"}}>
-                    
-                    <h5 className="card-title  mt-3 ms-3" >{status}</h5>
+            <nav className="navbar navbar-expand-lg navbar-light bg-light container-fluid p-0 " 
+            style={{ display: "initial" }}>
 
-                    <button className="navbar-toggler m-auto align-items-center"
-                        type="button"
-                        data-bs-toggle="collapse"
-                        data-bs-target={'#' + status} 
-                        aria-controls="navbarSupportedContent"
-                        aria-expanded="false"
-                        aria-label="Toggle navigation"
-                    >
-                        <span className={['aria-expanded'] ? ("bi bi-chevron-compact-down") : ("bi bi-chevron-compact-up")} > </span>
-                    </button>
+                <h5 className="card-title  mt-3 ms-3" >{status}</h5>
 
-                    <div className="collapse navbar-collapse" id={status}>
+                <button className="navbar-toggler m-auto align-items-center"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target={'#' + status}
+                    aria-controls="navbarSupportedContent"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+                >
+                    <span className={['aria-expanded']
+                        ? ("bi bi-chevron-compact-down")
+                        : ("bi bi-chevron-compact-up")}
+                    > </span>
+                </button>
 
-                        <ul className="navbar-nav  mb-lg-0 d-inline-block padding-block-start-1em padding-block-end-1em ">
-                            <li className="nav-item overflow-auto" style={{ maxHeight: "66vh" }} >
+                <div className="collapse navbar-collapse" id={status}>
 
-                                {isLoading && <h1>Loading...</h1>}
-                                {error && <h1>Error download...</h1>}
-                                {projects && projects
+                    <ul className="navbar-nav  mb-lg-0 d-inline-block padding-block-start-1em padding-block-end-1em ">
+                        <li className="nav-item overflow-auto" style={{ maxHeight: "66vh" }} >
+
+                            {isLoading && <h1>Loading...</h1>}
+                            {error && <h1>Error download...</h1>}
+                            {projects && projects
                                 .filter(project => project.status == status)
                                 .map(project =>
                                     <ProjectListItem project={project} key={project.id} />
                                 )}
-                            </li>
-                        </ul>
+                        </li>
+                    </ul>
 
-                    </div>
+                </div>
             </nav>
         </div>
     )

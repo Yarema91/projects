@@ -13,17 +13,18 @@ interface ProjectListItem {
 
 const ProjectListItem: React.FC<ProjectListItem> = ({ project }) => {
 
+
     
     return (
         <div>
             <Card  className="card border-0">
                 <Card.Body >
-                    <img className="ml-3" src={project.imageUrl} width='100%' alt="Generic placeholder image" />
+                <img className="ml-3" src={project.imageUrl[0]} width='100%' alt="Generic placeholder image" />
                     <Card.Title>{project.id}. {project.title}</Card.Title>
                     <Card.Text >
                         {project.body.replace(/(.{58})..+/, `$1...`)}
                     </Card.Text>
-                    <Link to={`/card/${project.id}`} role="button">Move to</Link>
+                    <Link to={`/card/${project.id}`} role="button">Read more</Link>
                 </Card.Body>
             </Card>
         </div>

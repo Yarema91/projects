@@ -16,10 +16,14 @@ const ModalWindow = ({ title, nameButton, children, onHandleSubmit, disabled }) 
     };
 
     return (
-        <div 
-        style={{ paddingLeft: ".7rem"}}
+        <div
+            style={{ paddingLeft: ".7rem" }}
         >
-            <button  type="button" className=" btn btn-outline-primary me-2" onClick={handleShow} style={{borderColor: "#00008B", color: "#00008B" }}>
+            <button type="button" className=" btn btn-outline-primary me-2"
+                style={{ borderColor: "#00008B", color: "#00008B" }}
+                onClick={handleShow}
+            // disabled={disabled}
+            >
                 {title}
             </button>
 
@@ -34,13 +38,13 @@ const ModalWindow = ({ title, nameButton, children, onHandleSubmit, disabled }) 
                     <Button variant="secondary" onClick={handleClose}>
                         Close
                     </Button>
-                   
+
                     <Button variant="primary"
                         disabled={disabled}
                         onClick={onSubmit} >
                         {nameButton}
                     </Button>
-                    
+
                 </Modal.Footer>
             </Modal>
         </div>

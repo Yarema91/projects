@@ -2,73 +2,88 @@
   "projects": [
     {
       "id": 1,
-      "imageUrl": "https://source.unsplash.com/1600x900/?project",
+      "imageUrl": [
+        "https://source.unsplash.com/1600x900/?project"
+      ],
       "title": "First project",
       "body": "Some quick example text about project. Some quick example text about project.Some quick example text about project.Some quick example text about project.",
       "status": "Finish"
     },
     {
       "id": 3,
-      "imageUrl": "https://source.unsplash.com/1600x900/?project-",
+      "imageUrl": [
+        "https://source.unsplash.com/1600x900/?project-"
+      ],
       "title": "Third project",
       "body": "You may have noticed that all of the tutorials on this site have a dashed line running through the center of each step, both in the horizontal and vertical direction. If students make their own centered lines on their own paper, before drawing, they will have an easy reference to follow. The more realistic kangaroo tutorial even has an extra set, for a total of 16 boxes, to help older students be a little more precise.",
       "status": "Active"
     },
     {
       "id": 11,
-      "imageUrl": "https://source.unsplash.com/1600x900/?project2",
+      "imageUrl": [
+        "https://source.unsplash.com/1600x900/?project2"
+      ],
       "title": "Eleventh project",
       "body": "VillageWaters is a three-year development project (March 2016 – February 2019) focusing on wastewater treatment in sparsely populated areas. The project is funded by the Interreg Baltic Sea Region Programme 2014-2020, which supports integrated territorial development and cooperation for a more innovative, better accessible and sustainable Baltic Sea Region.",
       "status": "Process"
     },
     {
       "title": "Indian tradishion dish",
-      "imageUrl": "https://source.unsplash.com/1600x900/?project-art",
+      "imageUrl": [
+        "https://source.unsplash.com/1600x900/?project-art"
+      ],
       "body": "335467768nkkn",
       "status": "Finish",
       "id": 13
     },
     {
       "title": "Mackwaine",
-      "imageUrl": "https://source.unsplash.com/1600x900/?project-art",
+      "imageUrl": [
+        "https://source.unsplash.com/1600x900/?project-art"
+      ],
       "body": "Some men founded great community",
       "status": "Finish",
       "id": 18
     },
     {
       "title": "Good job",
-      "imageUrl": "https://source.unsplash.com/1600x900/?project-art",
+      "imageUrl": [
+        "https://source.unsplash.com/1600x900/?project-art"
+      ],
       "body": "Long text about project",
       "status": "Active",
       "id": 19
     },
     {
       "title": "Draft project",
-      "imageUrl": "https://source.unsplash.com/1600x900/?project-art",
+      "imageUrl": [
+        "https://source.unsplash.com/1600x900/?project-art"
+      ],
       "body": "One who buys NFT in the auction with content proof of charity events in the past for financing charity events in the future also receives the status of philanthropist and chooses a new charity project for financing.",
       "status": "Upcomming",
       "id": 21
     },
     {
-      "title": "Draft project",
-      "imageUrl": "https://source.unsplash.com/1600x900/?project-art",
-      "body": "One who buys NFT in the auction with content proof of charity events in the past for financing charity events in the future also receives the status of philanthropist and chooses a new charity project for financing.",
-      "status": "Active",
-      "id": 21
+      "title": "Video",
+      "imageUrl": [
+        "https://source.unsplash.com/1600x900/?project-art",
+        "https://source.unsplash.com/1600x900/?project-5",
+        "https://www.youtube.com/watch?v=oUFJJNQGwhk",
+        "https://www.facebook.com/100003176900560/videos/1150744709094910",
+        "https://vimeo.com/28164488"
+      ],
+      "body": "Yoga video tutorial",
+      "status": "Draft",
+      "id": 24
     },
     {
-      "title": "Vfvvvd",
-      "imageUrl": "https://source.unsplash.com/1600x900/?project-art",
-      "body": "CharAt(0) toUpperCase() projectInput body slice",
+      "title": "Test empty input",
+      "imageUrl": [
+        "https://source.unsplash.com/1600x900/?project-art"
+      ],
+      "body": "Test empty input test empty input test empty input test empty input test empty input test empty input",
       "status": "Draft",
-      "id": 22
-    },
-    {
-      "title": "Day short",
-      "imageUrl": "https://source.unsplash.com/1600x900/?project-art",
-      "body": "Day short Day short Day short",
-      "status": "Draft",
-      "id": 23
+      "id": 25
     }
   ],
   "comments": [],

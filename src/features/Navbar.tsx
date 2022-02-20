@@ -9,11 +9,12 @@ import SearchBar from './project/SearchBar';
 import logoSvg from '../ATSlogo.png';
 import FormValidator from '../hooks/costunerValidatorForm';
 import { table } from 'console';
+import Autorisation from './Autorisation';
 
 
 const defaultFormValues: IProject = {
     title: '',
-    imageUrl: '',
+    imageUrl: [''],
     body: '',
     id: 0,
     status: '',
@@ -41,7 +42,7 @@ const Header = () => {
                 <h1>Input empty...</h1>
             )
         } else {
-            await createProject({ title, imageUrl: (imageUrl === "" ) ?  "https://source.unsplash.com/1600x900/?project-art" : imageUrl, body, status: "Draft" } as IProject);
+            await createProject({ title, imageUrl: (imageUrl === defaultFormValues.imageUrl ) ?  ["https://source.unsplash.com/1600x900/?project-art"] : imageUrl, body, status: "Draft" } as IProject);
             setProjectInput(defaultFormValues);
         }
     }
@@ -111,7 +112,7 @@ const Header = () => {
                                     <input  type="text" name="url" className='form-control'  placeholder="https://"
                                     value={projectInput.imageUrl ||  ""}
                                      onChange={e => {
-                                        setProjectInput({ ...projectInput, imageUrl: e.target.value });
+                                        setProjectInput({ ...projectInput, imageUrl: [e.target.value]});
                                         setIsDirty({ ...isDirty, "imageUrl": true });
                                     }} 
                                      />
@@ -149,14 +150,8 @@ const Header = () => {
                     className=" list-unstyled text-decoration-none align-item-center justify-content-center"
                     >
                         
-                            {/* <Button variant="#00008B" 
-                            className="align-item-center justify-content-center list-unstyled"
-                                style={{
-                                    // display: "table",
-                                    color: "white",
-                                    backgroundColor: "#00008B"
-                                }}
-                            >Log In</Button> */}
+                        <Autorisation />
+                           
                     </li>
 
                 </div>
