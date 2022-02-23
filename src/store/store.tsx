@@ -6,6 +6,7 @@ import { projectAPI } from "../services/ProjectService";
 
 
 const rootReducer = combineReducers({
+    //comentsstate
     productReducer,
     counterReducer,
     [projectAPI.reducerPath]: projectAPI.reducer
