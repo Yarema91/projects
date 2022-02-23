@@ -6,10 +6,7 @@ import { useAppSelector } from "../../hooks/redux";
 import { IProject } from "../../models/IProject"
 import { decrease, increase } from "../counter/counterSlice";
 
-import { Player } from 'video-react';
 import ReactPlayer from 'react-player';
-
-// import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import 'bootstrap/dist/css/bootstrap.css';
 import Carousel from 'react-bootstrap/Carousel';
@@ -102,9 +99,9 @@ const ProjectDetails: React.FC<ProjectDetails> = ({ project, update, remove }) =
                                     );
                                 } else {
                                     return (
-                                        <Carousel.Item key={index}>
+                                        <Carousel.Item key={index} className='player-wrapper'>
                                             <ReactPlayer
-                                                className="w-100 h-700px vertical-align-middle justify-content-center backgraund-color-yellow"
+                                                className="react-player w-100 h-700px vertical-align-middle justify-content-center backgraund-color-yellow"
                                                 url={image}
                                                 pip={true}
                                                 controls={true}

@@ -1,0 +1,25 @@
+.carousel {
+    max-height: 200px;
+    background-color: rgb(196, 224, 248);
+}
+
+.carousel-img {
+    padding: auto;
+    max-height: 80px;
+    max-width: 250px;
+    margin: auto;
+    /* align-items: center;
+    justify-items: center;
+    justify-content: center;
+    display: table-cell;
+    display: inline-block;
+    vertical-align: middle;
+    line-height: normal; */
+    /* vertical-align: middle; */
+    /* height: 100%; */
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Partners from "../features/Partners";
 import StatusContainer from "../features/project/StatusContainer";
 
 
@@ -17,6 +18,9 @@ const HomePage = () => {
             <StatusContainer status="Upcomming" />
             <StatusContainer status="Active" />
             <StatusContainer status="Finish" />
+      </div>
+      <div>
+        <Partners />
       </div>
      
 
