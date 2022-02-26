@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Autorisation from "../features/Autorisation";
 import Partners from "../features/Partners";
 import StatusContainer from "../features/project/StatusContainer";
 
@@ -8,6 +9,12 @@ const HomePage = () => {
 
   return (
     <div>
+      <div className="container text-center  p-5  " style={{backgroundColor: "lavender"}}>
+        <h2 className="p-3">Welcome to the Art-Tech-Charity</h2>
+        <Autorisation />
+      </div>
+
+
       <div className="container-fluid " >
         <h2 className="w-100 hover-shadow text-center d-row box-sizing-border-box mt-5 mb-5 "
         >Stages of financing</h2>
