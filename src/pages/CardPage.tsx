@@ -3,6 +3,7 @@ import ProjectDetails from "../features/project/ProjectDetails";
 import { IProject } from "../models/IProject";
 import { useParams } from 'react-router-dom';
 import { projectAPI } from "../services/ProjectService";
+import CustumCarusel from "../features/CustomCarusel"
 
 
 
@@ -30,6 +31,8 @@ const CardPage: React.FC<CardPage> = () => {
         deleteProject(project)
     }
 
+    
+
     return (
         <div className="container m-auto l-15px t-1.5em box-sizing-border-box">
             {error && <h1>Error find...</h1>}
@@ -41,6 +44,11 @@ const CardPage: React.FC<CardPage> = () => {
 
             {(project) ? <ProjectDetails project={project} update={handleUpdate} remove={handleRemove}
             /> : erroeMassege()}
+
+
+            <CustumCarusel />
+
+
         </div>
     )
 }
