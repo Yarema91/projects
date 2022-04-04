@@ -11,9 +11,9 @@ const CustumCarusel = () => {
     ]
 
     return (
-        <>custumCarusel
-            <button onClick={() => { setCount(count - 1) }} >before</button>
-            <button onClick={() => { setCount(count + 1) }} >after</button>
+        <>
+            <button onClick={() => { setCount(count - 1) }} >prev</button>
+            <button onClick={() => { setCount(count + 1) }} >next</button>
             {
                 images.map((item, index) => <div key={index} style={{ height: "400px", background: "green" }}>{item}</div>).filter((i, index: number) => {
                     return  (count > images.length - 1) ? setCount(0)
@@ -21,8 +21,6 @@ const CustumCarusel = () => {
                             : index === count
                 })
             }
-
-
         </>
     )
 }
